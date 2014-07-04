@@ -7,12 +7,12 @@ from .search import DocumentSearch
 
 # Create a default document store connection
 store = DocumentStore(
-  settings.ITSY_MONGODB_SERVERS,
-  settings.ITSY_MONGODB_DB
+  settings.HORSY_MONGODB_SERVERS,
+  settings.HORSY_MONGODB_DB
 )
 
 # Create a default document search connection
 search = DocumentSearch(
-  settings.ITSY_ELASTICSEARCH_SERVERS,
-  settings.ITSY_ELASTICSEARCH_INDEX
+  settings.HORSY_ELASTICSEARCH_SERVERS,
+  settings.HORSY_ELASTICSEARCH_INDEX
 )

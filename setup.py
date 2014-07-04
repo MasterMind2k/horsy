@@ -1,15 +1,15 @@
 from setuptools import setup, find_packages
 
 setup(
-  name = "Itsy",
+  name = "Horsy",
   version = "0.1",
   packages = find_packages(),
 # TODO dependencies
 #  install_requires = [""],
 
-  author = "Jernej Kos",
-  author_email = "k@jst.sm",
-  description = "Itsy, the Object-Document Mapper with a twist.",
+  author = "Gregor Kalisnik",
+  author_email = "gregor@unimatrix.si",
+  description = "Horsy, the Object-Document Mapper.",
   license = "BSD",
   keywords = "mongodb elasticsearch odm mapper"
 )

@@ -56,7 +56,7 @@ class SearchAnalyzer(object):
     h.update(typ)
     for p in self.get_properties():
       h.update(str(p))
-    return "itsy_" + h.hexdigest()
+    return "horsy_" + h.hexdigest()
 
   def __hash__(self):
     """

@@ -4,8 +4,8 @@ import traceback
 from django.core.management import base as management_base
 from django.utils import importlib
 
-from ... import document as itsy_document
-from ... import tasks as itsy_tasks
+from ... import document as horsy_document
+from ... import tasks as horsy_tasks
 
 class Command(management_base.BaseCommand):
   args = "class_path"
@@ -36,7 +36,7 @@ class Command(management_base.BaseCommand):
     module = importlib.import_module(module_name)
     document_class = getattr(module, class_name)
 
-    if not issubclass(document_class, itsy_document.Document):
+    if not issubclass(document_class, horsy_document.Document):
       raise management_base.CommandError("Specified class is not a valid Document!")
 
     if not document_class._meta.searchable or document_class._meta.abstract or document_class._meta.embedded:
@@ -50,7 +50,7 @@ class Command(management_base.BaseCommand):
 
     if options.get("background"):
       # Spawn the reindex task
-      itsy_tasks.search_index_reindex.delay(document_class)
+      horsy_tasks.search_index_reindex.delay(document_class)
 
       # Notify the user that the reindex has started in the background
       self.stdout.write("Reindex of %s has been initiated in the background.\n" % class_path)
@@ -73,7 +73,7 @@ class Command(management_base.BaseCommand):
           old_last_pk = last_pk
           for document in document_class.find(pk__gt = last_pk).order_by("pk").limit(batch_size):
             try:
-              document.save(target = itsy_document.DocumentSource.Search)
+              document.save(target = horsy_document.DocumentSource.Search)
             except KeyboardInterrupt:
               self.stdout.write("ERROR: Aborted by user.\n")
               raise

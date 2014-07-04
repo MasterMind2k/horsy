@@ -87,9 +87,9 @@ class FieldMetadata(object):
 
   def resolve_subfield_hierarchy(self, field_elements, get_field = False):
     """
-    Resolves Itsy field hierarchy into a database field hierarchy.
+    Resolves Horsy field hierarchy into a database field hierarchy.
 
-    @param field_elements: Ordered Itsy field names
+    @param field_elements: Ordered Horsy field names
     @return: Ordered database field names
     """
     db_field = []
@@ -257,7 +257,7 @@ class DocumentMetadata(FieldMetadata):
       filters.update(a.get_filters())
 
     # Get default configuration options
-    default_config = getattr(settings, "ITSY_ELASTICSEARCH_DEFAULT_CONFIG", {})
+    default_config = getattr(settings, "HORSY_ELASTICSEARCH_DEFAULT_CONFIG", {})
 
     self.search_engine.set_configuration(dict(
       analysis = dict(
