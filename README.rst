@@ -13,7 +13,6 @@ Quick usage
 .. code-block:: python
 
   import horsy
-  import pyes
 
   # A document class
   class Person(horsy.Document):
